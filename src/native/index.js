@@ -1,40 +1,34 @@
-import React from 'react';
-import { StatusBar, Platform } from 'react-native';
-import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import { Router, Stack } from 'react-native-router-flux';
-import { PersistGate } from 'redux-persist/es/integration/react';
+import React, { Component } from 'react';
+import PT from 'prop-types';
+import { Font } from 'expo';
+import { connect } from 'react-redux';
 
-import { StyleProvider } from 'native-base';
-import getTheme from '../../native-base-theme/components';
-import theme from '../../native-base-theme/variables/commonColor';
+import RootStack from './routes';
+import { setFontsLoaded } from '../ducks/fonts';
 
-import Routes from './routes/index';
-import Loading from './components/Loading';
+class App extends Component {
+    async componentDidMount() {
+        await Font.loadAsync({
+            'circular-pro-bold': require('../assets/fonts/CircularPro-Bold.otf'),
+            'circular-pro-book': require('../assets/fonts/CircularPro-Book.otf'),
+            'nimbus-black': require('../assets/fonts/NimbusSansDOT-Blac.otf'),
+            'nimbus-black-italic': require('../assets/fonts/NimbusSansDOT-BlacItal.otf'),
+        });
 
-// Hide StatusBar on Android as it overlaps tabs
-if (Platform.OS === 'android') StatusBar.setHidden(true);
+        this.props.setFontsLoaded();
+    }
 
-const Root = ({ store, persistor }) => (
-  <Provider store={store}>
-    <PersistGate
-      loading={<Loading />}
-      persistor={persistor}
-    >
-      <StyleProvider style={getTheme(theme)}>
-        <Router>
-          <Stack key="root">
-            {Routes}
-          </Stack>
-        </Router>
-      </StyleProvider>
-    </PersistGate>
-  </Provider>
-);
+    render() {
+        return <RootStack />;
+    }
+}
 
-Root.propTypes = {
-  store: PropTypes.shape({}).isRequired,
-  persistor: PropTypes.shape({}).isRequired,
+App.propTypes = {
+    setFontsLoaded: PT.func,
 };
 
-export default Root;
+const mapDispatchToProps = {
+    setFontsLoaded,
+};
+
+export default connect(null, mapDispatchToProps)(App);
