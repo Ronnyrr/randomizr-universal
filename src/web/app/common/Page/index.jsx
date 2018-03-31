@@ -42,7 +42,7 @@ const Page = ({
                     top: '43vh',
                 }}
             >
-                <RandomText title={title} wordsArray={questions} />
+                <RandomText wordsArray={questions} />
             </Parallax.Layer>
         </Fragment>
     );

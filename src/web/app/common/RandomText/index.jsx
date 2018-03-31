@@ -11,13 +11,10 @@ class RandomText extends Component {
     };
 
     componentDidMount() {
-        console.log('cdm', this.props.title);
         this.randomizeOptions();
     }
 
     randomizeOptions = async () => {
-        console.log('randomize');
-
         await this.setState({ animating: true });
 
         const { wordsArray } = this.props;
