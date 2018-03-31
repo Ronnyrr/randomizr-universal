@@ -1,12 +1,12 @@
 import React from 'react';
-// import PT from 'prop-types';
+import PT from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import styled, { css } from 'styled-components';
 
-// import ParalaxWrapper from 'modules/ParalaxWrapper';
+import ParalaxWrapper from 'modules/ParalaxWrapper';
 
-const PageEl = styled.section`
+const PageEl = styled.main`
     width: 100vw;
     height: 100vh;
     background: linear-gradient(90deg, #a0d945, #05c6f3, #05c6f3, #c86dd7, #c86dd7, #e0a03d);
@@ -23,17 +23,22 @@ const PageEl = styled.section`
     `}
 `;
 
-const App = () => (
-    <main>
+const App = ({ ui }) => (
+    <PageEl page={ui.currentPage}>
         <Switch>
-            <Route
-                exact
-                path="/"
-                render={() => <PageEl />}
-            />
+            <Route path="/" component={ParalaxWrapper} exact />
         </Switch>
-    </main>
+    </PageEl>
 );
 
-export default App;
-// export default connect(state => ({ ui: state.ui }))(App);
+App.propTypes = {
+    ui: PT.shape({
+        currentPage: PT.number,
+    }),
+};
+
+const mapStateToProps = state => ({
+    ui: state.ui || {},
+});
+
+export default connect(mapStateToProps)(App);

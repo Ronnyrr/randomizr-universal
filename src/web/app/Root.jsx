@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import globalStyling from 'config/styles';
 
 import theme from 'constants/theme';
-import Loading from 'components/Loading';
+import Loading from 'common/Loading';
 
 import configureStore from 'src/store';
 import App from './App';
