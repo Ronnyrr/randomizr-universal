@@ -1,54 +1,40 @@
 {
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "ecmaFeatures": {
-    "classes": true
-  },
-  "rules": {
-    "react/jsx-filename-extension": [
-      "error",
-      {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
-    ],
-    "react/jsx-indent": [
-      "error",
-      4
-    ],
-    "react/jsx-indent-props": [
-      "error",
-      4
-    ],
-    "global-require": "off",
-    "indent": [
-      "error",
-      4
-    ],
-    "no-console": [
-      2,
-      {
-        "allow": [
-          "info",
-          "error"
-        ]
-      }
-    ],
-    "react/forbid-prop-types": [
-      0
-    ],
-    "react/require-default-props": [
-      0
-    ],
-    "import/no-extraneous-dependencies": "off",
-    "import/extensions": "off",
-    "import/no-unresolved": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "no-underscore-dangle": "off",
-    "prefer-promise-reject-errors": "off",
-    "no-nested-ternary": "off",
-    "react/no-multi-comp": "off"
-  }
+    'extends': 'airbnb',
+    'parser': 'babel-eslint',
+    'settings': {
+        'import/resolver': 'webpack',
+    },
+    'plugins': ['react'],
+    'globals': {
+        '__DEV__': false,
+        '__ACC__': false,
+        '__PROD__': false,
+        '__CLIENT__': false,
+        '__SERVER__': false,
+    },
+    'ecmaFeatures': {
+        'classes': true
+    },
+    'env': {
+        'browser': true,
+        'node': true,
+    },
+    'rules': {
+        'react/require-default-props': 0,
+        'react/forbid-prop-types': 0,
+        'react/jsx-filename-extension': 0,
+        'react/jsx-indent': ['error', 4],
+        'react/jsx-indent-props': ['error', 4],
+        'global-require': 'off',
+        'indent': ['error', 4],
+        'no-console': [2, { allow: ['info', 'error']}],
+        'import/no-extraneous-dependencies': 'off',
+        'import/extensions': 'off',
+        'import/no-unresolved': 'off',
+        'jsx-a11y/anchor-is-valid': 'off',
+        'no-underscore-dangle': 'off',
+        'prefer-promise-reject-errors': 'off',
+        'no-nested-ternary': 'off',
+        'react/no-multi-comp': 'off'
+    }
 }

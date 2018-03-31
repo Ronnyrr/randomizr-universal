@@ -70,9 +70,8 @@ module.exports = {
             src: path.resolve(__dirname, '../src'),
             app: path.resolve(__dirname, '../src/web/app'),
 
-            common: path.resolve(__dirname, '../src/web/app/components/common'),
-            components: path.resolve(__dirname, '../src/web/app/components'),
-            modules: path.resolve(__dirname, '../src/web/app/components/modules'),
+            common: path.resolve(__dirname, '../src/web/app/common'),
+            modules: path.resolve(__dirname, '../src/web/app/modules'),
 
             config: path.resolve(__dirname, '../src/config'),
             constants: path.resolve(__dirname, '../src/constants'),
@@ -82,7 +81,7 @@ module.exports = {
             fonts: path.resolve(__dirname, '../src/assets/fonts'),
             images: path.resolve(__dirname, '../src/assets/images'),
             server: path.resolve(__dirname, '../src/web/server'),
-            vectors: path.resolve(__dirname, '../src/assets/vectors'),
+            vectors: path.resolve(__dirname, '../src/assets/icons'),
         },
     },
 };
