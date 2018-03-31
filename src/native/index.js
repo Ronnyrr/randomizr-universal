@@ -11,8 +11,8 @@ class App extends Component {
         await Font.loadAsync({
             'circular-pro-bold': require('../assets/fonts/CircularPro-Bold.otf'),
             'circular-pro-book': require('../assets/fonts/CircularPro-Book.otf'),
-            'nimbus-black': require('../assets/fonts/NimbusSansDOT-Blac.otf'),
-            'nimbus-black-italic': require('../assets/fonts/NimbusSansDOT-BlacItal.otf'),
+            'nimbus-black': require('../assets/fonts/NimbusSansDOT-Black.otf'),
+            'nimbus-black-italic': require('../assets/fonts/NimbusSansDOT-BlackItalic.otf'),
         });
 
         this.props.setFontsLoaded();
