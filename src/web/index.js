@@ -1,34 +1,16 @@
+/* eslint 'global-require': 0 */
 /* global document */
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/es/integration/react';
+import ReactDOM from 'react-dom';
+import { SSR } from 'config';
 
-import configureStore from '../store/index';
-import registerServiceWorker from './register-service-worker';
-import Routes from './routes/index';
+const render = () => {
+    const Root = require('./app/Root').default;
+    ReactDOM[SSR && !__DEV__ ? 'hydrate' : 'render'](<Root />, document.getElementById('app'));
+};
 
-// Components
-import Loading from './components/Loading';
+if (__DEV__ && module.hot) {
+    module.hot.accept('./app/Root', render);
+}
 
-// Load css
-require('./styles/style.scss');
-
-const { persistor, store } = configureStore();
-// persistor.purge(); // Debug to clear persist
-
-const rootElement = document.getElementById('root');
-
-const Root = () => (
-  <Provider store={store}>
-    <PersistGate loading={<Loading />} persistor={persistor}>
-      <Router>
-        <Routes />
-      </Router>
-    </PersistGate>
-  </Provider>
-);
-
-render(<Root />, rootElement);
-registerServiceWorker();
+render();
