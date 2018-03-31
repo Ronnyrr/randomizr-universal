@@ -2,12 +2,46 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "ecmaFeatures": {
-    "classes": true,
+    "classes": true
   },
   "rules": {
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/jsx-indent": [
+      "error",
+      4
+    ],
+    "react/jsx-indent-props": [
+      "error",
+      4
+    ],
     "global-require": "off",
-    "no-console": "off",
+    "indent": [
+      "error",
+      4
+    ],
+    "no-console": [
+      2,
+      {
+        "allow": [
+          "info",
+          "error"
+        ]
+      }
+    ],
+    "react/forbid-prop-types": [
+      0
+    ],
+    "react/require-default-props": [
+      0
+    ],
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
@@ -16,5 +50,5 @@
     "prefer-promise-reject-errors": "off",
     "no-nested-ternary": "off",
     "react/no-multi-comp": "off"
-  },
+  }
 }
