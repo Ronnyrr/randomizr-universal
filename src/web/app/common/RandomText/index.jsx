@@ -18,8 +18,8 @@ class RandomText extends Component {
         await this.setState({ animating: true });
 
         const { wordsArray } = this.props;
-        let text;
 
+        let text;
         if (wordsArray.length > 0) {
             text = wordsArray[Math.floor(Math.random() * wordsArray.length)];
 
