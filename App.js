@@ -4,11 +4,11 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import { ThemeProvider } from 'styled-components';
 
 import Loading from './src/native/components/Loading';
-import theme from './src/constants/theme';
-import configureStore from './src/store';
+import theme from './src/config/theme';
+import { configurePersistStore } from './src/store';
 import App from './src/native/index';
 
-const { persistor, store } = configureStore();
+const { persistor, store } = configurePersistStore();
 
 const Root = () => (
     <Provider store={store}>
