@@ -3,14 +3,14 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack/web.config.js');
+
+const config = require('./webpack/webpack.config.dev');
 const renderFullPage = require('./src/web/server/helpers/renderFullPage');
 
 const app = express();
 const compiler = webpack(config);
 
 const middleware = webpackMiddleware(compiler, {
-    publicPath: config.output.publicPath,
     logLevel: 'error',
     headers: { 'Access-Control-Allow-Origin': '*' },
     stats: { colors: true },

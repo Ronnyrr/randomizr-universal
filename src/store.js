@@ -1,36 +1,14 @@
 /* global window */
-import { createStore, applyMiddleware, compose } from 'redux';
-import { persistStore, persistCombineReducers } from 'redux-persist';
-import storage from 'redux-persist/es/storage'; // default: localStorage if web, AsyncStorage if react-native
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import * as appReducers from './ducks';
 
-// Redux Persist config
-const config = {
-    key: 'root',
-    storage,
-    blacklist: ['fonts'],
-};
+let middleware = applyMiddleware(thunk);
+const reducers = combineReducers({ ...appReducers });
 
-const reducer = persistCombineReducers(config, { ...appReducers });
+if (__DEV__ && __CLIENT__ && typeof window.devToolsExtension === 'function') {
+    middleware = compose(middleware, window.devToolsExtension());
+}
 
-const middleware = [thunk];
-
-const configureStore = () => {
-    const store = createStore(
-        reducer,
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-        compose(applyMiddleware(...middleware)),
-    );
-
-    const persistor = persistStore(
-        store,
-        null,
-        () => { store.getState(); },
-    );
-
-    return { persistor, store };
-};
-
-export default configureStore;
+export default createStore(reducers, middleware);
