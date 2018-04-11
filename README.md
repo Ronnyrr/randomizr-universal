@@ -6,11 +6,11 @@ This project includes a React and React Native application to random generate qu
 
 `$ cd randomizr-universal && npm install`
 
-`$ npm start` (run native via Expo)
+`exp start` (to run project via Expo)
 
 or
 
-`$ npm run web` (to run the web project in development mode)
+`$ npm start` (to run the web project in development mode)
 
 `$ npm run build` (to run the web project in production mode)
 

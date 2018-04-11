@@ -60,8 +60,6 @@ class RandomText extends Component {
     render() {
         const { fonts } = this.props;
 
-        console.log('fonts', fonts);
-
         return (
             fonts.loaded ? (
                 <TouchableWithoutFeedback onPress={() => this.randomizeOptions()}>

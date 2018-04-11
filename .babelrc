@@ -1,10 +1,14 @@
 {
-    "presets": ["babel-preset-expo", "env", "react", "stage-0"],
-    "env": {
-        "development": {
-            "plugins": ["transform-react-jsx-source"]
-        }
-    },
+    "presets": [
+        "babel-preset-expo",
+        ["env", {
+            "targets": {
+                "browsers": ["last 2 Chrome versions"]
+            }
+        }],
+        "react",
+        "stage-0"
+    ],
     "plugins": [
         "lodash",
         ["babel-plugin-styled-components", {

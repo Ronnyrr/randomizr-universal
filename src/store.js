@@ -9,7 +9,7 @@ let middleware = applyMiddleware(thunk);
 // default store
 const reducers = combineReducers({ ...appReducers });
 
-if (__DEV__ && typeof window.devToolsExtension === 'function') {
+if (__DEV__ && __CLIENT__ && typeof window.devToolsExtension === 'function') {
     middleware = compose(middleware, window.devToolsExtension());
 }
 
