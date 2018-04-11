@@ -3,15 +3,17 @@ import PT from 'prop-types';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
-import globalStyling from 'styles';
-import store from 'src/store';
-import theme from 'styles/theme';
-import App from 'components/App';
+
+import globalStyling from 'config/styles';
+import theme from 'config/theme';
+import configureStore from 'src/store';
+
+import App from 'app/App';
 
 globalStyling();
 
 const ServerRoot = ({ location, sheet }) => (
-    <Provider store={store}>
+    <Provider store={configureStore}>
         <StyleSheetManager sheet={sheet}>
             <ThemeProvider theme={theme}>
                 <StaticRouter location={location} context={{}}>

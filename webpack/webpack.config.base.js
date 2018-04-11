@@ -1,33 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
-const globals = require('../src/config/globals');
+const webpackMerge = require('webpack-merge');
 
-module.exports = {
-    name: 'client',
-    devtool: 'eval-source-map',
-    entry: {
-        app: [
-            'webpack-hot-middleware/client?reload=true&noInfo=true',
-            'babel-polyfill',
-            path.resolve(__dirname, '../src/web'),
-        ],
-        vendor: [
-            'prop-types',
-            'react',
-            'react-dom',
-            'react-router',
-            'react-redux',
-            'react-router-dom',
-            'redux',
-        ],
-    },
-    output: {
-        path: path.resolve(__dirname, '../dist'),
-        filename: '[name].js',
-        publicPath: '/dist/',
-    },
+const baseConfig = {
+    mode: 'production',
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
@@ -39,11 +16,27 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                loader: 'babel-loader!svg-react-loader',
+                oneOf: [
+                    {
+                        resourceQuery: /external/,
+                        loader: 'url-loader?limit=10000',
+                    },
+                    {
+                        loader: 'babel-loader!svg-react-loader',
+                    },
+                ],
             },
             {
                 test: /\.(jpe?g|png|gif)$/i,
-                loader: 'url-loader?limit=10000',
+                oneOf: [
+                    {
+                        resourceQuery: /external/,
+                        loader: 'file-loader?name=static/[name].[ext]',
+                    },
+                    {
+                        loader: 'url-loader?limit=10000',
+                    },
+                ],
             },
             {
                 exclude: [
@@ -58,12 +51,17 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin(globals('client')),
-        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
-    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                },
+            },
+        },
+    },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
         alias: {
@@ -74,7 +72,6 @@ module.exports = {
             modules: path.resolve(__dirname, '../src/web/app/modules'),
 
             config: path.resolve(__dirname, '../src/config'),
-            constants: path.resolve(__dirname, '../src/constants'),
             ducks: path.resolve(__dirname, '../src/ducks'),
             lib: path.resolve(__dirname, '../src/lib'),
 
@@ -85,3 +82,7 @@ module.exports = {
         },
     },
 };
+
+const merge = (...config) => webpackMerge(baseConfig, ...config);
+
+module.exports = merge;

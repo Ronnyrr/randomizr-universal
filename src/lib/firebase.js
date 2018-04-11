@@ -1,5 +1,5 @@
 import * as FirebaseModule from 'firebase';
-import firebaseConfig from '../constants/firebase';
+import firebaseConfig from '../config/firebase';
 
 const {
     apiKey,

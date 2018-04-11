@@ -61,7 +61,7 @@ class RandomText extends Component {
         const { fonts } = this.props;
 
         return (
-            fonts.loaded && (
+            fonts.loaded ? (
                 <TouchableWithoutFeedback onPress={() => this.randomizeOptions()}>
                     <ContainerEl>
                         <Animated.View
@@ -82,7 +82,7 @@ class RandomText extends Component {
                         </FooterEl>
                     </ContainerEl>
                 </TouchableWithoutFeedback>
-            )
+            ) : <View />
         );
     }
 }
