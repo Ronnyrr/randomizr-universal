@@ -1,9 +1,18 @@
 {
   "expo": {
-    "sdkVersion": "22.0.0",
+    "sdkVersion": "26.0.0",
     "name": "Randomizr",
     "slug": "randomizr",
     "icon": "src/assets/images/app-icon.png",
-    "privacy": "public"
+    "privacy": "public",
+    "ios": {
+      "bundleIdentifier": "randomizr",
+      "publishBundlePath": "ios/randomizr/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/randomizr/Supporting/shell-app-manifest.json"
+    },
+    "android": {
+      "package": "randomizr"
+    },
+    "version": "0.1.0",
   }
 }
