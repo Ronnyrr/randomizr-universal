@@ -4,10 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { SSR } from 'config';
 
-import Root from './app/Root';
-
 const render = () => {
-    // const Root = require('./app/Root').default;
+    const Root = require('./app/Root').default;
     ReactDOM[SSR && !__DEV__ ? 'hydrate' : 'render'](<Root />, document.getElementById('app'));
 };
 
