@@ -5,20 +5,20 @@ export const SET_FONTS_LOADED = 'fonts/SET_FONTS_LOADED';
 
 // default state
 export const initialState = {
-    loaded: false,
+  loaded: false,
 };
 
 // reducer
 export default (state = initialState, action = {}) => {
-    switch (action.type) {
-    case SET_FONTS_LOADED:
-        return {
-            ...state,
-            loaded: true,
-        };
+  switch (action.type) {
+  case SET_FONTS_LOADED:
+    return {
+      ...state,
+      loaded: true,
+    };
 
-    default: return state;
-    }
+  default: return state;
+  }
 };
 
 // actions

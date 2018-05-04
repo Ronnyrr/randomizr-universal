@@ -15,31 +15,31 @@ const BackgroundEl = styled(LinearGradient)`
 `;
 
 const SwipeContainer = ({
-    colors, children, onSwipeLeft, onSwipeRight,
+  colors, children, onSwipeLeft, onSwipeRight,
 }) => (
-    <BackgroundEl
-        colors={colors}
-        start={{ x: 0, y: 1 }}
-        end={{ x: 1, y: 1 }}
+  <BackgroundEl
+    colors={colors}
+    start={{ x: 0, y: 1 }}
+    end={{ x: 1, y: 1 }}
+  >
+    <ContainerEl
+      onSwipeLeft={() => onSwipeLeft && onSwipeLeft()}
+      onSwipeRight={() => onSwipeRight && onSwipeRight()}
     >
-        <ContainerEl
-            onSwipeLeft={() => onSwipeLeft && onSwipeLeft()}
-            onSwipeRight={() => onSwipeRight && onSwipeRight()}
-        >
-            {children}
-        </ContainerEl>
-    </BackgroundEl>
+      {children}
+    </ContainerEl>
+  </BackgroundEl>
 );
 
 SwipeContainer.propTypes = {
-    colors: PT.array,
-    children: PT.array,
-    onSwipeLeft: PT.func,
-    onSwipeRight: PT.func,
+  colors: PT.array,
+  children: PT.array,
+  onSwipeLeft: PT.func,
+  onSwipeRight: PT.func,
 };
 
 SwipeContainer.defaultProps = {
-    colors: ['#a0d945', '#05c6f3'],
+  colors: ['#a0d945', '#05c6f3'],
 };
 
 export default SwipeContainer;

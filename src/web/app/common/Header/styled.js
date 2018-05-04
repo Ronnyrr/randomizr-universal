@@ -44,6 +44,7 @@ export const NextEl = styled(Next)`
 
 export const TitleEl = styled.span`
     font-size: 60px;
+    text-transform: uppercase;
     font-family: 'NimbusBlackItalic';
     color: ${props => props.theme.white};
 `;

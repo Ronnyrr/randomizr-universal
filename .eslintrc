@@ -3,31 +3,43 @@
     'parser': 'babel-eslint',
     'settings': {
         'import/resolver': 'webpack',
-    },
-    'plugins': ['react'],
+  },
+    'plugins': ['react'
+  ],
     'globals': {
         '__DEV__': false,
         '__ACC__': false,
         '__PROD__': false,
         '__CLIENT__': false,
         '__SERVER__': false,
-    },
+  },
     'ecmaFeatures': {
         'classes': true
-    },
+  },
     'env': {
         'browser': true,
         'node': true,
-    },
+  },
     'rules': {
         'react/require-default-props': 0,
         'react/forbid-prop-types': 0,
         'react/jsx-filename-extension': 0,
-        'react/jsx-indent': ['error', 4],
-        'react/jsx-indent-props': ['error', 4],
+        'react/jsx-indent': ['error',
+      2
+    ],
+        'react/jsx-indent-props': ['error',
+      2
+    ],
         'global-require': 'off',
-        'indent': ['error', 4],
-        'no-console': [2, { allow: ['info', 'error']}],
+        'indent': ['error',
+      2
+    ],
+        'no-console': [
+      2,
+      { allow: ['info', 'error'
+        ]
+      }
+    ],
         'import/no-extraneous-dependencies': 'off',
         'import/extensions': 'off',
         'import/no-unresolved': 'off',
@@ -36,5 +48,5 @@
         'prefer-promise-reject-errors': 'off',
         'no-nested-ternary': 'off',
         'react/no-multi-comp': 'off'
-    }
+  }
 }

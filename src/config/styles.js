@@ -39,6 +39,6 @@ export default () => injectGlobal`
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: 'CircularPro', sans-serif;
+        font-family: 'CircularProBook', sans-serif;
     }
 `;

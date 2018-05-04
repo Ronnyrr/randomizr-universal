@@ -7,15 +7,15 @@ import App from './src/native/index';
 import configureStore from './src/store';
 
 if (typeof global.self === 'undefined') {
-    global.self = global;
+  global.self = global;
 }
 
 const Root = () => (
-    <Provider store={configureStore}>
-        <ThemeProvider theme={theme}>
-            <App />
-        </ThemeProvider>
-    </Provider>
+  <Provider store={configureStore}>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </Provider>
 );
 
 export default Root;

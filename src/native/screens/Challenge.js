@@ -6,50 +6,50 @@ import { getChallenges } from '../../ducks/questions';
 import { Header, RandomText, SwipeContainer } from '../components/index';
 
 class Challenge extends Component {
-    componentDidMount() {
-        this.props.getChallenges();
-    }
+  componentDidMount() {
+    this.props.getChallenges();
+  }
 
     previousPage = () => {
-        this.props.navigation.goBack();
+      this.props.navigation.goBack();
     }
 
     render() {
-        const { questions: { loading, challenges } } = this.props;
+      const { questions: { loading, challenges } } = this.props;
 
-        return (
-            <SwipeContainer
-                onSwipeRight={() => this.previousPage()}
-                colors={['#c86dd7', '#e0a03d']}
-            >
-                <Header
-                    title="Design Challenge"
-                    previousPage={() => this.previousPage()}
-                />
+      return (
+        <SwipeContainer
+          onSwipeRight={() => this.previousPage()}
+          colors={['#c86dd7', '#e0a03d']}
+        >
+          <Header
+            title="Design Challenge"
+            previousPage={() => this.previousPage()}
+          />
 
-                {!loading && challenges.length > 0 && (
-                    <RandomText wordsArray={challenges} />
-                )}
-            </SwipeContainer>
-        );
+          {!loading && challenges.length > 0 && (
+            <RandomText wordsArray={challenges} />
+          )}
+        </SwipeContainer>
+      );
     }
 }
 
 Challenge.propTypes = {
-    getChallenges: PT.func,
-    navigation: PT.object,
-    questions: PT.shape({
-        loading: PT.bool,
-        challenges: PT.array,
-    }),
+  getChallenges: PT.func,
+  navigation: PT.object,
+  questions: PT.shape({
+    loading: PT.bool,
+    challenges: PT.array,
+  }),
 };
 
 const mapStateToProps = state => ({
-    questions: state.questions || {},
+  questions: state.questions || {},
 });
 
 const mapDispatchToProps = {
-    getChallenges,
+  getChallenges,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Challenge);

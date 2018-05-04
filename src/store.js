@@ -6,7 +6,7 @@ import * as appReducers from './ducks';
 import globals from './config/globals';
 
 const globs = globals('client');
-console.log(globs);
+// console.log(globs);
 // console.log(__DEV__);
 // console.log(__CLIENT__);
 

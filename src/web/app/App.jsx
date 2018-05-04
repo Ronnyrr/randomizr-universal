@@ -24,21 +24,21 @@ const PageEl = styled.main`
 `;
 
 const App = ({ ui }) => (
-    <PageEl page={ui.currentPage}>
-        <Switch>
-            <Route path="/" component={ParalaxWrapper} exact />
-        </Switch>
-    </PageEl>
+  <PageEl page={ui.currentPage}>
+    <Switch>
+      <Route path="/" component={ParalaxWrapper} exact />
+    </Switch>
+  </PageEl>
 );
 
 App.propTypes = {
-    ui: PT.shape({
-        currentPage: PT.number,
-    }),
+  ui: PT.shape({
+    currentPage: PT.number,
+  }),
 };
 
 const mapStateToProps = state => ({
-    ui: state.ui || {},
+  ui: state.ui || {},
 });
 
 export default connect(mapStateToProps)(App);
